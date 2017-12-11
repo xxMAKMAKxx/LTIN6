@@ -10,6 +10,5 @@ public class Spustitelna {
 		dzbany.fillPot(RIGHT);
 		dzbany.pourPot(RIGHT, LEFT);
 		dzbany.printPots();
-		
 	}
 }

@@ -1,6 +1,6 @@
 package cz.vutbr.feec.cisla;
 
-public class Dzbany {
+public class Dzbany implements Comparable<Dzbany>{
 	public final int LEFT = 0;
 	public final int RIGHT = 1;
 	public final int LEFT_MAX = 4;
@@ -58,5 +58,18 @@ public class Dzbany {
 	
 	public void printPots() {
 		System.out.println("("+this.leftPot+","+this.rightPot+")");
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Dzbany dzban = (Dzbany) obj;
+		return compareTo(dzban) == 1;
+	}
+	@Override
+	public int compareTo(Dzbany dzban) {
+		if(this.leftPot == dzban.leftPot && this.rightPot == dzban.rightPot)
+			return 1;
+		else
+			return 0;
 	}
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
-public class HraciPole /* implements Comparable<HraciPole> */ {
+public class HraciPole implements Comparable<HraciPole> {
 	private int[][] data = { { 1, 4, 7 }, { 2, 5, 8 }, { 3, 6, -1 } };
 	private int x = 2;
 	private int y = 2;
