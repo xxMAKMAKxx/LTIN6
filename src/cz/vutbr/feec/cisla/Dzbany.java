@@ -1,5 +1,7 @@
 package cz.vutbr.feec.cisla;
 
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
 public class Dzbany implements Comparable<Dzbany>{
 	public final int LEFT = 0;
 	public final int RIGHT = 1;
@@ -71,5 +73,13 @@ public class Dzbany implements Comparable<Dzbany>{
 			return 1;
 		else
 			return 0;
+	}
+	
+	@Override
+	public int hashCode() {
+		HashCodeBuilder h = new HashCodeBuilder();
+		h.append(leftPot);
+		h.append(rightPot);
+		return h.toHashCode();
 	}
 }
