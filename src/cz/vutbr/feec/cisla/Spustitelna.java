@@ -13,7 +13,7 @@ public class Spustitelna {
 		final int EMPTYPOT = 0;
 		final int FILLPOT = 1;
 		final int POURPOT = 2;
-		final int HLEADNA_HODNOTA = 1;
+		final int HLEADNA_HODNOTA = 2;
 		Dzbany dzbanUvod = new Dzbany();
 		
 		HashSet<Dzbany> closed = new HashSet<Dzbany>();
@@ -38,15 +38,6 @@ public class Spustitelna {
         		System.exit(0);
         	}
         	else {
-        		/*
-        		//DEBUG START
-        		System.out.println("Closed fronta pro dzban: ("+tmp.getLeft()+","+tmp.getRight()+")");
-				for(Dzbany entry:closed ) {
-		            entry.printPots();
-		        }
-				//DEBUG END
-				 * 
-				 */
         		//i je pro leva/prava a j je pro akce
         		for(int i = 0; i < 2; i++) {
         			for(int j = 0; j < 3; j++){

@@ -53,6 +53,9 @@ public class Dzbany implements Comparable<Dzbany>{
 	}
 	public void pourPot (int from, int to) {
 		if(from == LEFT && to == RIGHT) {
+			//Check jestli se muze provest
+			if(this.leftPot == this.LEFT_MAX && this.rightPot == this.RIGHT_MAX)
+				return;
 			this.rightPot += this.leftPot;
 			if(this.rightPot > RIGHT_MAX)
 				this.rightPot = RIGHT_MAX;
@@ -63,6 +66,9 @@ public class Dzbany implements Comparable<Dzbany>{
 				this.leftPot = 4;
 		}
 		else if(from == RIGHT && to == LEFT) {
+			//Check jestli se muze provest
+			if(this.leftPot == this.LEFT_MAX && this.rightPot == this.RIGHT_MAX)
+				return;
 			this.leftPot += this.rightPot;
 			if(this.leftPot > LEFT_MAX)
 				this.leftPot = LEFT_MAX;
