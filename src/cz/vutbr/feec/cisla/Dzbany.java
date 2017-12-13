@@ -7,6 +7,9 @@ public class Dzbany implements Comparable<Dzbany>{
 	public final int RIGHT = 1;
 	public final int LEFT_MAX = 4;
 	public final int RIGHT_MAX = 3; 
+	public final int EMPTYPOT = 0;
+	public final int FILLPOT = 1;
+	public final int POURPOT = 2;
 	
 	private int leftPot = 0;
 	private int rightPot = 0;
@@ -56,6 +59,32 @@ public class Dzbany implements Comparable<Dzbany>{
 		else {
 			System.out.println("Chyba, neplatna operace");
 		}
+	}
+	
+	public Dzbany klonujAPohni(int kteryDzban, int akce) {
+		Dzbany nove = new Dzbany();
+		nove.leftPot = this.leftPot;
+		nove.rightPot = this.rightPot;
+		
+		if(akce == EMPTYPOT) {
+			nove.emptyPot(kteryDzban);
+		}
+		else if(akce == FILLPOT) {
+			nove.fillPot(kteryDzban);
+		}
+		else if(akce == POURPOT) {
+			if(kteryDzban == LEFT) {
+				
+			}
+			else if(kteryDzban == RIGHT) {
+				
+			}
+		}
+		//TODO pridej historii "tahu"
+		//nove.pohyby.addAll(this.pohyby);
+		//nove.pohyby.add(smer);
+		//TODO potencionalne check kroku/tahu
+		return nove;
 	}
 	
 	public void printPots() {
