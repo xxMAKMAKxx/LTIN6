@@ -48,13 +48,13 @@ public class Dzbany implements Comparable<Dzbany>{
 			this.rightPot += this.leftPot;
 			if(this.rightPot > RIGHT_MAX)
 				this.rightPot = RIGHT_MAX;
-			this.leftPot = 0;
+			this.leftPot = this.leftPot-(this.rightPot-this.leftPot);
 		}
 		else if(from == RIGHT && to == LEFT) {
 			this.leftPot += this.rightPot;
 			if(this.leftPot > LEFT_MAX)
 				this.leftPot = LEFT_MAX;
-			this.rightPot = 0;
+			this.rightPot = this.rightPot-(this.leftPot-this.rightPot);
 		}
 		else {
 			System.out.println("Chyba, neplatna operace");
@@ -73,12 +73,7 @@ public class Dzbany implements Comparable<Dzbany>{
 			nove.fillPot(kteryDzban);
 		}
 		else if(akce == POURPOT) {
-			if(kteryDzban == LEFT) {
-				
-			}
-			else if(kteryDzban == RIGHT) {
-				
-			}
+			nove.pourPot(kteryDzban, ((kteryDzban+1)%2));
 		}
 		//TODO pridej historii "tahu"
 		//nove.pohyby.addAll(this.pohyby);

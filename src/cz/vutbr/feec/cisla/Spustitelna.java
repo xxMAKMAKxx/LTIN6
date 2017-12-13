@@ -1,6 +1,5 @@
 package cz.vutbr.feec.cisla;
 
-import java.security.KeyStore.Entry;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -8,8 +7,11 @@ public class Spustitelna {
 	public static void main(String args[]) {
 		final int LEFT = 0;
 		final int RIGHT = 1;
-		final int EMPYPOT = 0;
-		final int POURPOT = 1;
+		final int LEFT_MAX = 4;
+		final int RIGHT_MAX = 3; 
+		final int EMPTYPOT = 0;
+		final int FILLPOT = 1;
+		final int POURPOT = 2;
 		Dzbany dzbanUvod = new Dzbany();
 		
 		HashSet<Dzbany> closed = new HashSet<Dzbany>();
@@ -17,6 +19,21 @@ public class Spustitelna {
         
         //Pridani uvodniho dzbanu (0,0)
         open.add(dzbanUvod);
+        
+        //TESTING START
+        /*
+        dzbanUvod.fillPot(RIGHT);
+        dzbanUvod.pourPot(RIGHT, LEFT);
+        dzbanUvod.fillPot(RIGHT);
+        dzbanUvod.printPots();
+        dzbanUvod.pourPot(RIGHT, LEFT);
+        dzbanUvod.printPots();
+        dzbanUvod.emptyPot(LEFT);
+        
+        dzbanUvod.printPots();
+        */
+        //TESTING END
+        
         
         while(!open.isEmpty()) {
         	Dzbany tmp = open.pop(); 
@@ -27,29 +44,40 @@ public class Spustitelna {
         		System.exit(0);
         	}
         	else {
-        		closed.add(tmp);
+        		//DEBUG START
+        		System.out.println("Closed fronta pro dzban: ("+tmp.getLeft()+","+tmp.getRight()+")");
+				for(Dzbany entry:closed ) {
+		            entry.printPots();
+		        }
+				//DEBUG END
         		//i je pro leva/prava a j je pro akce
         		for(int i = 0; i < 2; i++) {
         			for(int j = 0; j < 3; j++){
         				if(j == 2) {
-        					//TODO pro prelivani dzbanu
+        					Dzbany tmpAdd = tmp.klonujAPohni(i, j);
+	        				if(!closed.contains(tmpAdd)) {
+	        					System.out.println("Pridavam dzban do open:");
+	        					tmpAdd.printPots();
+	        					open.addLast(tmpAdd);
+	        				}
         				}
         				else {
 	        				Dzbany tmpAdd = tmp.klonujAPohni(i, j);
 	        				if(!closed.contains(tmpAdd)) {
-	        					System.out.println("Closed fronta pro dzban: ("+tmp.getLeft()+","+tmp.getRight()+")");
-	        					for(Dzbany entry:closed ) {
-	        			            entry.printPots();
-	        			        }
 	        					System.out.println("Pridavam dzban do open:");
 	        					tmpAdd.printPots();
 	        					open.addLast(tmpAdd);
+	        					closed.add(tmpAdd);
 	        				}
         				}
         					
         			}
         		}
         	}
+        	System.out.println("Open fronta pro dzban: ("+tmp.getLeft()+","+tmp.getRight()+")");
+			for(Dzbany entry:open) {
+	            entry.printPots();
+	        }
         }
         System.out.println("Reseni neexistuje!");
         
