@@ -1,5 +1,6 @@
 package cz.vutbr.feec.cisla;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -12,7 +13,7 @@ public class Spustitelna {
 		final int EMPTYPOT = 0;
 		final int FILLPOT = 1;
 		final int POURPOT = 2;
-		final int HLEADNA_HODNOTA = 2;
+		final int HLEADNA_HODNOTA = 1;
 		Dzbany dzbanUvod = new Dzbany();
 		
 		HashSet<Dzbany> closed = new HashSet<Dzbany>();
@@ -28,9 +29,12 @@ public class Spustitelna {
         		System.out.println("Mam reseni!");
         		tmp.printPots();
         		System.out.println("Historie je: ");
-        		for(Dzbany entry:closed ) {
-		            entry.printPots();
+        		int tmpCounter = 1;
+        		for(Dzbany entry: tmp.getPohyby()) {
+		            System.out.println("Krok "+tmpCounter+": "+"("+entry.getLeft()+","+entry.getRight()+")");
+		            tmpCounter++;
 		        }
+        		System.out.println("Krok "+tmpCounter+": "+"("+tmp.getLeft()+","+tmp.getRight()+")");
         		System.exit(0);
         	}
         	else {

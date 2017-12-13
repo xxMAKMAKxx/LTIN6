@@ -13,15 +13,15 @@ public class Dzbany implements Comparable<Dzbany>{
 	public final int FILLPOT = 1;
 	public final int POURPOT = 2;
 	
-	private ArrayList<Integer []> pohyby = new ArrayList<Integer []>();
-	
-	public Integer[] getPohyby() {
-		return this.pohyby;
-	}
+	public ArrayList<Dzbany> pohyby = new ArrayList<Dzbany>();
 	
 	private int leftPot = 0;
 	private int rightPot = 0;
 	
+	
+	public ArrayList<Dzbany> getPohyby() {
+		return this.pohyby;
+	}
 	public int getLeft() {
 		return leftPot;
 	}
@@ -86,7 +86,7 @@ public class Dzbany implements Comparable<Dzbany>{
 		Integer tmpPole[] = new Integer[2];
 		tmpPole[0] = kteryDzban;
 		tmpPole[1] = akce;
-		nove.pohyby.add(tmpPole);
+		nove.pohyby.add(this);
 		
 		if(akce == EMPTYPOT) {
 			nove.emptyPot(kteryDzban);
@@ -124,5 +124,21 @@ public class Dzbany implements Comparable<Dzbany>{
 		h.append(leftPot);
 		h.append(rightPot);
 		return h.toHashCode();
+	}
+	
+	public String translatePot(int pot) {
+		if(pot == LEFT)
+			return "levy";
+		else
+			return "pravy";
+	}
+	
+	public String translateAction(int action) {
+		if(action == EMPTYPOT)
+			return "vyprazdni dzban";
+		else if(action == FILLPOT)
+			return "napln dzban vodou";
+		else
+			return "prelij z jednoho dzbanu do druheho";
 	}
 }
