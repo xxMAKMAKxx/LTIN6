@@ -49,12 +49,20 @@ public class Dzbany implements Comparable<Dzbany>{
 			if(this.rightPot > RIGHT_MAX)
 				this.rightPot = RIGHT_MAX;
 			this.leftPot = this.leftPot-(this.rightPot-this.leftPot);
+			if(this.leftPot < 0)
+				this.leftPot = 0;
+			if(this.leftPot > 4)
+				this.leftPot = 4;
 		}
 		else if(from == RIGHT && to == LEFT) {
 			this.leftPot += this.rightPot;
 			if(this.leftPot > LEFT_MAX)
 				this.leftPot = LEFT_MAX;
 			this.rightPot = this.rightPot-(this.leftPot-this.rightPot);
+			if(this.rightPot < 0)
+				this.rightPot = 0;
+			if(this.rightPot > 3)
+				this.rightPot = 3;
 		}
 		else {
 			System.out.println("Chyba, neplatna operace");
