@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 public class Dzbany implements Comparable<Dzbany>{
+	//Deklarace promennych pro snadnejsi orientaci
 	public final int LEFT = 0;
 	public final int RIGHT = 1;
 	public final int LEFT_MAX = 4;
@@ -18,7 +19,7 @@ public class Dzbany implements Comparable<Dzbany>{
 	private int leftPot = 0;
 	private int rightPot = 0;
 	
-	
+	//Gettery a settery
 	public ArrayList<Dzbany> getPohyby() {
 		return this.pohyby;
 	}
@@ -51,6 +52,7 @@ public class Dzbany implements Comparable<Dzbany>{
 			rightPot = 0;
 		}
 	}
+	
 	public void pourPot (int from, int to) {
 		if(from == LEFT && to == RIGHT) {
 			//Check jestli se muze provest
@@ -60,10 +62,7 @@ public class Dzbany implements Comparable<Dzbany>{
 			if(this.rightPot > RIGHT_MAX)
 				this.rightPot = RIGHT_MAX;
 			this.leftPot = this.leftPot-(this.rightPot-this.leftPot);
-			if(this.leftPot < 0)
-				this.leftPot = 0;
-			if(this.leftPot > 4)
-				this.leftPot = 4;
+			correctPots();
 		}
 		else if(from == RIGHT && to == LEFT) {
 			//Check jestli se muze provest
@@ -73,14 +72,22 @@ public class Dzbany implements Comparable<Dzbany>{
 			if(this.leftPot > LEFT_MAX)
 				this.leftPot = LEFT_MAX;
 			this.rightPot = this.rightPot-(this.leftPot-this.rightPot);
-			if(this.rightPot < 0)
-				this.rightPot = 0;
-			if(this.rightPot > 3)
-				this.rightPot = 3;
+			correctPots();
 		}
 		else {
 			System.out.println("Chyba, neplatna operace");
 		}
+	}
+	
+	public void correctPots() {
+		if(this.leftPot < 0)
+			this.leftPot = 0;
+		if(this.leftPot > 4)
+			this.leftPot = 4;
+		if(this.rightPot < 0)
+			this.rightPot = 0;
+		if(this.rightPot > 3)
+			this.rightPot = 3;
 	}
 	
 	public Dzbany klonujAPohni(int kteryDzban, int akce) {

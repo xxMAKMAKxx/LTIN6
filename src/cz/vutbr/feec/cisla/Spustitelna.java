@@ -6,13 +6,6 @@ import java.util.LinkedList;
 
 public class Spustitelna {
 	public static void main(String args[]) {
-		final int LEFT = 0;
-		final int RIGHT = 1;
-		final int LEFT_MAX = 4;
-		final int RIGHT_MAX = 3; 
-		final int EMPTYPOT = 0;
-		final int FILLPOT = 1;
-		final int POURPOT = 2;
 		final int HLEADNA_HODNOTA = 2;
 		Dzbany dzbanUvod = new Dzbany();
 		
@@ -24,7 +17,7 @@ public class Spustitelna {
         
         while(!open.isEmpty()) {
         	Dzbany tmp = open.pop(); 
-        	//Je tmp resenim?
+        	//Je tmp resenim? pokud ano vypis dzban a historii
         	if((tmp.getLeft() == 0 && tmp.getRight() == HLEADNA_HODNOTA) || (tmp.getRight() == 0 && tmp.getLeft() == HLEADNA_HODNOTA)) {
         		System.out.println("Mam reseni!");
         		tmp.printPots();
@@ -60,8 +53,5 @@ public class Spustitelna {
         	}
         }
         System.out.println("Reseni neexistuje!");
-        
-				
-		
 	}
 }
