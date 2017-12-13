@@ -1,5 +1,7 @@
 package cz.vutbr.feec.cisla;
 
+import java.util.ArrayList;
+
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 public class Dzbany implements Comparable<Dzbany>{
@@ -10,6 +12,12 @@ public class Dzbany implements Comparable<Dzbany>{
 	public final int EMPTYPOT = 0;
 	public final int FILLPOT = 1;
 	public final int POURPOT = 2;
+	
+	private ArrayList<Integer []> pohyby = new ArrayList<Integer []>();
+	
+	public Integer[] getPohyby() {
+		return this.pohyby;
+	}
 	
 	private int leftPot = 0;
 	private int rightPot = 0;
@@ -74,6 +82,12 @@ public class Dzbany implements Comparable<Dzbany>{
 		nove.leftPot = this.leftPot;
 		nove.rightPot = this.rightPot;
 		
+		nove.pohyby.addAll(this.pohyby);
+		Integer tmpPole[] = new Integer[2];
+		tmpPole[0] = kteryDzban;
+		tmpPole[1] = akce;
+		nove.pohyby.add(tmpPole);
+		
 		if(akce == EMPTYPOT) {
 			nove.emptyPot(kteryDzban);
 		}
@@ -83,9 +97,6 @@ public class Dzbany implements Comparable<Dzbany>{
 		else if(akce == POURPOT) {
 			nove.pourPot(kteryDzban, ((kteryDzban+1)%2));
 		}
-		//TODO pridej historii "tahu"
-		//nove.pohyby.addAll(this.pohyby);
-		//nove.pohyby.add(smer);
 		//TODO potencionalne check kroku/tahu
 		return nove;
 	}
