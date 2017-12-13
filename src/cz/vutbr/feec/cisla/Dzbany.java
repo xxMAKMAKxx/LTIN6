@@ -58,20 +58,28 @@ public class Dzbany implements Comparable<Dzbany>{
 			//Check jestli se muze provest
 			if(this.leftPot == this.LEFT_MAX && this.rightPot == this.RIGHT_MAX)
 				return;
+			int tmpRightPot = this.rightPot;
 			this.rightPot += this.leftPot;
 			if(this.rightPot > RIGHT_MAX)
 				this.rightPot = RIGHT_MAX;
-			this.leftPot = this.leftPot-(this.rightPot-this.leftPot);
+			if(tmpRightPot == 0)
+				this.leftPot -= this.leftPot;
+			else
+				this.leftPot = this.leftPot-(this.rightPot-this.leftPot);
 			correctPots();
 		}
 		else if(from == RIGHT && to == LEFT) {
 			//Check jestli se muze provest
 			if(this.leftPot == this.LEFT_MAX && this.rightPot == this.RIGHT_MAX)
 				return;
+			int tmpLeftPot = this.leftPot;
 			this.leftPot += this.rightPot;
 			if(this.leftPot > LEFT_MAX)
 				this.leftPot = LEFT_MAX;
-			this.rightPot = this.rightPot-(this.leftPot-this.rightPot);
+			if(tmpLeftPot == 0)
+				this.rightPot -= this.rightPot;
+			else
+				this.rightPot = this.rightPot-(this.leftPot-this.rightPot);
 			correctPots();
 		}
 		else {
