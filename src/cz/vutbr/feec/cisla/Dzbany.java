@@ -14,7 +14,7 @@ public class Dzbany implements Comparable<Dzbany>{
 	public final int FILLPOT = 1;
 	public final int POURPOT = 2;
 	
-	public ArrayList<Dzbany> pohyby = new ArrayList<Dzbany>();
+	private ArrayList<Dzbany> pohyby = new ArrayList<Dzbany>();
 	
 	private int leftPot = 0;
 	private int rightPot = 0;
@@ -36,6 +36,7 @@ public class Dzbany implements Comparable<Dzbany>{
 		this.rightPot = right;
 	}
 	
+	//Akce:
 	public void fillPot(int whichOne) {
 		if(whichOne == LEFT) {
 			leftPot = LEFT_MAX;
@@ -118,7 +119,6 @@ public class Dzbany implements Comparable<Dzbany>{
 		else if(akce == POURPOT) {
 			nove.pourPot(kteryDzban, ((kteryDzban+1)%2));
 		}
-		//TODO potencionalne check kroku/tahu
 		return nove;
 	}
 	
@@ -126,6 +126,7 @@ public class Dzbany implements Comparable<Dzbany>{
 		System.out.println("("+this.leftPot+","+this.rightPot+")");
 	}
 	
+	//Pro comparable
 	@Override
 	public boolean equals(Object obj) {
 		Dzbany dzban = (Dzbany) obj;
@@ -145,21 +146,5 @@ public class Dzbany implements Comparable<Dzbany>{
 		h.append(leftPot);
 		h.append(rightPot);
 		return h.toHashCode();
-	}
-	
-	public String translatePot(int pot) {
-		if(pot == LEFT)
-			return "levy";
-		else
-			return "pravy";
-	}
-	
-	public String translateAction(int action) {
-		if(action == EMPTYPOT)
-			return "vyprazdni dzban";
-		else if(action == FILLPOT)
-			return "napln dzban vodou";
-		else
-			return "prelij z jednoho dzbanu do druheho";
 	}
 }

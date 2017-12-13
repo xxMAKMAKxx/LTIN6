@@ -1,6 +1,5 @@
 package cz.vutbr.feec.cisla;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -34,18 +33,10 @@ public class Spustitelna {
         		//i je pro leva/prava a j je pro akce
         		for(int i = 0; i < 2; i++) {
         			for(int j = 0; j < 3; j++){
-        				if(j == 2) {
-        					Dzbany tmpAdd = tmp.klonujAPohni(i, j);
-	        				if(!closed.contains(tmpAdd)) {
-	        					open.addLast(tmpAdd);
-	        				}
-        				}
-        				else {
-	        				Dzbany tmpAdd = tmp.klonujAPohni(i, j);
-	        				if(!closed.contains(tmpAdd)) {
-	        					open.addLast(tmpAdd);
-	        					closed.add(tmpAdd);
-	        				}
+        				Dzbany tmpAdd = tmp.klonujAPohni(i, j);
+        				if(!closed.contains(tmpAdd)) {
+        					open.addLast(tmpAdd);
+        					closed.add(tmpAdd);
         				}
         					
         			}
